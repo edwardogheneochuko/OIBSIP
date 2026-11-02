@@ -1,0 +1,188 @@
+/* =========================================================
+   Temperature Converter
+   Oasis Infobyte · Web Development · Level 1 · Task 3
+   ========================================================= */
+
+:root {
+  --bg: #0b0f17;
+  --card: #121826;
+  --surface: #182033;
+  --border: #232c40;
+  --text: #e6e9f0;
+  --muted: #8b95a8;
+  --cold: #38bdf8;
+  --hot: #f97316;
+  --error: #f87171;
+  --gradient: linear-gradient(135deg, var(--cold) 0%, #a78bfa 50%, var(--hot) 100%);
+  --radius: 14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;          /* centres the card */
+  padding: 32px 16px;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(500px circle at 15% 15%, rgba(56, 189, 248, 0.15), transparent 60%),
+    radial-gradient(500px circle at 85% 85%, rgba(249, 115, 22, 0.15), transparent 60%),
+    var(--bg);
+}
+
+/* ---------- Card ---------- */
+.converter {
+  width: 100%;
+  max-width: 520px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 40px 32px 28px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+.converter::before {             /* gradient strip on top */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: var(--gradient);
+}
+
+.converter-header { text-align: center; margin-bottom: 32px; }
+.icon {
+  width: 64px; height: 64px;
+  margin: 0 auto 16px;
+  display: grid; place-items: center;
+  font-size: 2rem;
+  background: var(--surface);
+  border-radius: 18px;
+}
+h1 { font-family: "Space Grotesk", sans-serif; font-size: 1.9rem; margin-bottom: 6px; }
+.converter-header p { color: var(--muted); }
+
+/* ---------- Form ---------- */
+.field-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+#temp-input {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 1.3rem;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#temp-input:focus { border-color: var(--cold); box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15); }
+#temp-input.invalid { border-color: var(--error); box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.15); }
+
+.error {
+  min-height: 1.4em;           /* reserves space so layout doesn't jump */
+  margin: 8px 0 16px;
+  color: var(--error);
+  font-size: 0.9rem;
+}
+
+/* Unit radio buttons styled as segmented control */
+.unit-group { border: none; margin-bottom: 24px; }
+.units { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.units input { position: absolute; opacity: 0; pointer-events: none; }
+.units label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 12px 6px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.units label span { color: var(--muted); font-size: 0.85rem; }
+.units label:hover { border-color: #3a4660; }
+.units input:checked + label { border-color: var(--cold); background: rgba(56, 189, 248, 0.1); }
+.units input:focus-visible + label { box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.25); }
+
+/* ---------- Buttons ---------- */
+.actions { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-bottom: 28px; }
+.btn {
+  padding: 15px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--gradient);
+  color: #0b0f17;
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.2s;
+}
+.btn:hover { filter: brightness(1.1); }
+.btn:active { transform: scale(0.98); }
+.btn-ghost { background: transparent; color: var(--text); border: 2px solid var(--border); }
+
+/* ---------- Results ---------- */
+.results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 8px;
+  background: var(--surface);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.result.source { border-color: var(--border); opacity: 0.7; }   /* the unit the user typed in */
+.result-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.result-value {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 6px 0 2px;
+  word-break: break-all;
+}
+.result-unit { color: var(--muted); font-size: 0.9rem; }
+.results.updated .result:not(.source) { animation: pop 0.35s ease; }
+@keyframes pop { 50% { transform: scale(1.05); } }
+
+.feel {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--muted);
+  min-height: 1.5em;
+}
+.feel strong { color: var(--text); }
+
+.credit {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.credit a { color: var(--cold); text-decoration: none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .converter { padding: 32px 20px 24px; }
+  h1 { font-size: 1.6rem; }
+  .units label { font-size: 0.8rem; }
+  .result-value { font-size: 1.25rem; }
+}
