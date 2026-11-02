@@ -1,0 +1,404 @@
+/* =========================================================
+   Lumo Solar — Landing Page
+   Oasis Infobyte · Web Development · Level 1 · Task 1
+   ========================================================= */
+
+/* ---------- 1. Colour palette & design tokens ---------- */
+:root {
+  --navy: #0f1b2d;
+  --navy-light: #1b2b44;
+  --amber: #f5a524;
+  --amber-dark: #d98a0b;
+  --cream: #fff8ec;
+  --white: #ffffff;
+  --text: #1f2937;
+  --muted: #5b6474;
+
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(15, 27, 45, 0.08);
+  --nav-height: 72px;
+}
+
+/* ---------- 2. Reset (box-sizing set intentionally) ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height); /* sticky nav won't cover section titles */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;          /* body size: 16px */
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--white);
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+
+/* ---------- 3. Typography scale ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--navy);
+}
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+
+/* ---------- 4. Layout helpers ---------- */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section { padding: 96px 0; }
+.section-alt { background: var(--cream); }
+
+.section-title { text-align: center; margin-bottom: 12px; }
+.section-intro {
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.125rem;
+  max-width: 560px;
+  margin: 0 auto 56px;
+}
+
+/* ---------- 5. Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border: 2px solid var(--amber);
+  border-radius: 999px;
+  background: var(--amber);
+  color: var(--navy);
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.2s, transform 0.2s, color 0.2s;
+}
+.btn:hover { background: var(--amber-dark); border-color: var(--amber-dark); transform: translateY(-2px); }
+
+.btn-outline { background: transparent; color: var(--navy); }
+.btn-outline:hover { background: var(--amber); color: var(--navy); }
+
+.btn-small { padding: 10px 20px; font-size: 0.9rem; }
+.btn-block { display: block; width: 100%; }
+.btn-light { background: var(--white); border-color: var(--white); }
+.btn-light:hover { background: var(--cream); border-color: var(--cream); }
+
+/* ---------- 6. Sticky navigation ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #eef0f3;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: var(--nav-height);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--navy);
+}
+.logo-accent { color: var(--amber); }
+.logo-sun {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 4px rgba(245, 165, 36, 0.25);
+}
+
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font-weight: 500;
+  color: var(--muted);
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-links a:hover { color: var(--navy); border-bottom-color: var(--amber); }
+
+/* ---------- 7. Hero ---------- */
+.hero {
+  background: linear-gradient(160deg, var(--cream) 0%, var(--white) 70%);
+  padding: 80px 0 96px;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: rgba(245, 165, 36, 0.15);
+  color: var(--amber-dark);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.hero-text h1 { margin-bottom: 20px; }
+.subheadline {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
+
+.hero-stats { display: flex; flex-wrap: wrap; gap: 40px; }
+.hero-stats strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--navy);
+}
+.hero-stats span { color: var(--muted); font-size: 0.9rem; }
+
+/* CSS illustration */
+.hero-art {
+  position: relative;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.sun {
+  position: absolute;
+  top: 0;
+  right: 15%;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffd27a 0%, var(--amber) 70%);
+  box-shadow: 0 0 0 18px rgba(245, 165, 36, 0.18), 0 0 0 40px rgba(245, 165, 36, 0.08);
+}
+.panel {
+  width: 300px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 10px;
+  background: #c9d3e0;
+  border-radius: 8px;
+  transform: perspective(600px) rotateX(35deg);
+  box-shadow: var(--shadow);
+}
+.panel span {
+  height: 54px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, var(--navy-light) 0%, #2d4a73 100%);
+}
+.panel-stand {
+  width: 14px;
+  height: 70px;
+  background: #9aa6b6;
+  border-radius: 0 0 4px 4px;
+}
+
+/* ---------- 8. Feature cards ---------- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid #eef0f3;
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-4px); }
+.card-icon {
+  font-size: 2rem;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  background: var(--cream);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.card h3 { margin-bottom: 10px; }
+.card p { color: var(--muted); }
+
+/* ---------- 9. Steps ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  counter-reset: none;
+}
+.step { text-align: center; padding: 0 12px; }
+.step-number {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--amber);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.step h3 { margin-bottom: 8px; }
+.step p { color: var(--muted); }
+
+/* ---------- 10. Pricing ---------- */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.price-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid #eef0f3;
+  border-radius: var(--radius);
+  padding: 40px 28px 32px;
+  box-shadow: var(--shadow);
+}
+.price-card.featured { background: var(--navy); border-color: var(--navy); }
+.price-card.featured h3,
+.price-card.featured .price { color: var(--white); }
+.price-card.featured li { color: #c9d3e0; }
+
+.badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--amber);
+  color: var(--navy);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.price {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 8px 0 20px;
+}
+.price-card ul { flex-grow: 1; margin-bottom: 28px; }
+.price-card li {
+  color: var(--muted);
+  padding: 8px 0 8px 28px;
+  position: relative;
+}
+.price-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--amber);
+  font-weight: 700;
+}
+.price-card.featured .btn-outline { color: var(--white); }
+
+/* ---------- 11. CTA banner ---------- */
+.cta-banner {
+  background: linear-gradient(120deg, var(--amber) 0%, #ffc04d 100%);
+  padding: 72px 0;
+}
+.cta-inner { text-align: center; }
+.cta-inner h2 { margin-bottom: 10px; }
+.cta-inner p { color: var(--navy); font-size: 1.1rem; margin-bottom: 28px; }
+
+/* ---------- 12. Footer ---------- */
+.footer { background: var(--navy); color: #c9d3e0; padding: 64px 0 24px; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.logo-footer { color: var(--white); margin-bottom: 12px; }
+.footer h4 { color: var(--white); margin-bottom: 16px; }
+.footer-list li { margin-bottom: 10px; }
+.footer-list a:hover { color: var(--amber); }
+.copyright {
+  text-align: center;
+  font-size: 0.85rem;
+  border-top: 1px solid var(--navy-light);
+  padding: 24px 24px 0;
+}
+
+/* ---------- 13. Responsive breakpoints ---------- */
+@media (max-width: 960px) {
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .subheadline { margin-left: auto; margin-right: auto; }
+  .hero-actions, .hero-stats { justify-content: center; }
+  .hero-art { height: 300px; }
+}
+
+@media (max-width: 720px) {
+  :root { --nav-height: 112px; }
+  .nav-inner { flex-wrap: wrap; justify-content: center; gap: 8px 24px; padding-top: 12px; padding-bottom: 12px; }
+  .nav-links { order: 3; width: 100%; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .nav-links a { font-size: 0.9rem; }
+
+  .section { padding: 72px 0; }
+  .hero { padding: 56px 0 72px; }
+  .steps, .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-grid { gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr; text-align: center; }
+  .logo-footer { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .feature-grid { grid-template-columns: 1fr; }
+  .panel { width: 240px; }
+  .panel span { height: 42px; }
+  .sun { width: 100px; height: 100px; right: 10%; }
+  .hero-actions .btn { width: 100%; }
+}
