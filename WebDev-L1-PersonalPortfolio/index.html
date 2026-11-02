@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edward Ogheneochuko | Web Developer & Designer</title>
+  <meta name="description" content="Portfolio of Edward Ogheneochuko, web developer and designer and MSc Computer Science student at the University of Lagos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">EO<span>.</span></a>
+
+      <!-- Checkbox hack: lets the mobile menu open and close without JavaScript -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+      <label for="menu-toggle" class="hamburger" aria-hidden="true"><span></span></label>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== HERO / PROFILE ========== -->
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="avatar" role="img" aria-label="Avatar for Edward Ogheneochuko">
+          <span>EO</span>
+        </div>
+
+        <p class="greeting">Hi, I'm</p>
+        <h1>Edward Ogheneochuko</h1>
+        <p class="role">Web Developer <span class="amp">&amp;</span> Designer</p>
+        <p class="tagline">
+          I build fast, responsive and good-looking web apps with React, Next.js and Node.js.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn">View My Work</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div>
+          <p class="section-label">01 · About me</p>
+          <h2>Turning ideas into <span class="gradient-text">working products</span>.</h2>
+        </div>
+        <div class="about-text">
+          <p>
+            I'm a web developer and designer, currently studying for an MSc in Computer Science
+            at the University of Lagos (UNILAG).
+          </p>
+          <p>
+            I enjoy building full-stack applications from the ground up, from clean, responsive
+            interfaces with React and Tailwind CSS to the APIs and databases that power them.
+            I'm always learning, and I care about writing code that is easy to read and maintain.
+          </p>
+          <ul class="facts">
+            <li><strong>Education</strong><span>MSc Computer Science, UNILAG</span></li>
+            <li><strong>Focus</strong><span>Full-stack web development</span></li>
+            <li><strong>Based in</strong><span>Lagos, Nigeria</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <p class="section-label">02 · Skills</p>
+        <h2>My toolkit</h2>
+
+        <div class="skills-grid">
+          <div class="skill"><span class="skill-icon" style="--c:#61dafb">⚛</span>React</div>
+          <div class="skill"><span class="skill-icon" style="--c:#3178c6">TS</span>TypeScript</div>
+          <div class="skill"><span class="skill-icon" style="--c:#e5e7eb">N</span>Next.js</div>
+          <div class="skill"><span class="skill-icon" style="--c:#38bdf8">≋</span>Tailwind CSS</div>
+          <div class="skill"><span class="skill-icon" style="--c:#68a063">⬢</span>Node.js</div>
+          <div class="skill"><span class="skill-icon" style="--c:#4db33d">◆</span>MongoDB</div>
+          <div class="skill"><span class="skill-icon" style="--c:#f7df1e">JS</span>JavaScript</div>
+          <div class="skill"><span class="skill-icon" style="--c:#e34f26">&lt;/&gt;</span>HTML &amp; CSS</div>
+          <div class="skill"><span class="skill-icon" style="--c:#f05032">⎇</span>Git</div>
+          <div class="skill"><span class="skill-icon" style="--c:#a78bfa">◉</span>GitHub</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="section-label">03 · Projects</p>
+        <h2>Things I've built</h2>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-thumb thumb-gym"><span>🏋️</span></div>
+            <div class="project-body">
+              <h3>Gym Fitness Web App</h3>
+              <p>
+                A full-stack fitness app built on the MERN stack. Users can browse workouts,
+                track their progress and manage their training from one dashboard.
+              </p>
+              <ul class="tags">
+                <li>MongoDB</li><li>Express</li><li>React</li><li>Node.js</li>
+              </ul>
+              <a href="https://github.com/edwardogheneochuko" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb thumb-solar"><span>☀️</span></div>
+            <div class="project-body">
+              <h3>Lumo Solar Landing Page</h3>
+              <p>
+                A responsive landing page for a home solar brand, with a sticky nav, pricing
+                cards and a hero illustration drawn entirely in CSS.
+              </p>
+              <ul class="tags">
+                <li>HTML5</li><li>CSS3</li><li>Responsive</li>
+              </ul>
+              <a href="https://github.com/edwardogheneochuko/OIBSIP/tree/main/WebDev-L1-LandingPage" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb thumb-temp"><span>🌡️</span></div>
+            <div class="project-body">
+              <h3>Temperature Converter</h3>
+              <p>
+                An interactive tool that converts between Celsius, Fahrenheit and Kelvin, with
+                input validation and absolute-zero checks.
+              </p>
+              <ul class="tags">
+                <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
+              </ul>
+              <a href="https://github.com/edwardogheneochuko/OIBSIP/tree/main/WebDev-L1-TemperatureConverter" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="section section-alt" id="contact">
+      <div class="container contact-inner">
+        <p class="section-label">04 · Contact</p>
+        <h2>Let's work together</h2>
+        <p class="contact-text">
+          I'm open to internships, freelance projects and collaborations.
+          The quickest way to reach me is by email.
+        </p>
+
+        <a href="mailto:headiesed@gmail.com" class="btn btn-large">headiesed@gmail.com</a>
+
+        <ul class="socials">
+          <li>
+            <a href="https://github.com/edwardogheneochuko" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/edward-ogheneochuko/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2Zm1.8 13.1H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:headiesed@gmail.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.5l10 6.2 10-6.2V6H2Zm20 2.9-9.5 5.9a1 1 0 0 1-1 0L2 8.9V18h20V8.9Z"/></svg>
+              <span>Email</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year">2026</span> Edward Ogheneochuko · Built with HTML, CSS &amp; JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
